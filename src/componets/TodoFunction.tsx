@@ -1,24 +1,20 @@
 import React, { useState } from "react";
 import "../TodoFunction.css";
-
-interface Todo {
-  id: number;
-  title: string;
-  createdAt: Date;
-  completed: boolean;
-}
+import { useRecoilState, useRecoilValue } from "recoil";
+import { todosAtom } from "../recoil/atoms/todosAtom";
+import { filterStateAtom } from "../recoil/atoms/filterStateAtom";
+import { filteredTodosSelector } from "../recoil/selectors/filteredTodosSelector";
 
 const TodoFunction: React.FC = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useRecoilState(todosAtom);
   const [todo, setTodo] = useState<string>("");
-  const [filter, setFilter] = useState<"uncompleted" | "completed">(
-    "uncompleted"
-  );
+  const [filter, setFilter] = useRecoilState(filterStateAtom);
+  const filteredTodos = useRecoilValue(filteredTodosSelector);
 
   // Todoを追加する処理
   const addTodo = () => {
     if (todo.trim() === "") return; //空白のtodoは追加しない
-    const newTodo: Todo = {
+    const newTodo = {
       id: Date.now(),
       title: todo,
       createdAt: new Date(),
@@ -41,17 +37,6 @@ const TodoFunction: React.FC = () => {
     const deleteTodos = todos.filter((todo) => todo.id !== id);
     setTodos(deleteTodos);
   };
-
-  // todosをフィルタリングしてfilteredTodosに格納した
-  const filteredTodos = todos.filter((todo) => {
-    if (filter === "uncompleted") {
-      return !todo.completed;
-    } else if (filter === "completed") {
-      return todo.completed;
-    } else {
-      return true;
-    }
-  });
 
   return (
     <div className="todo">
