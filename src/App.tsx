@@ -1,13 +1,13 @@
 import { RecoilRoot } from "recoil";
 import "./App.css";
-import Todo from "./componets/Todo";
+import TodoFunction from "./componets/TodoFunction";
 
 function App() {
   return (
     <div className="App">
       <h1>TodoList</h1>
       <RecoilRoot>
-        <Todo />
+        <TodoFunction />
       </RecoilRoot>
     </div>
   );
