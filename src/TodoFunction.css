@@ -1,0 +1,84 @@
+/* todo全体のcss */
+.todo {
+  width: 500px;
+  height: 500px;
+  padding: 20px;
+  margin: 0 auto;
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+}
+
+/* todoの入力部分 */
+.todo-input input {
+  width: 80%;
+  padding: 8px;
+  margin-right: 18px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.todo-input button {
+  padding: 6px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.todo-input button:hover {
+  opacity: 1;
+}
+
+/* フィルタリングとtodolist表示部分 */
+.todo-list select {
+  padding: 6px;
+  margin-top: 16px;
+  border-radius: 4px;
+}
+
+.todo-list ul {
+  list-style: none;
+  padding: 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* 単体のtodo */
+.todo-list li {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  margin-bottom: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #e0ffff;
+  justify-content: space-between;
+}
+
+.todo-list li input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.todo-list p {
+  margin: 0;
+}
+
+.todo-list button {
+  padding: 6px 10px;
+  margin-right: 10px;
+  background-color: #ff2222;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.todo-list button:hover {
+  opacity: 1;
+}
