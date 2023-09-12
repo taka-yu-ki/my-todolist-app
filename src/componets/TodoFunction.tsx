@@ -10,18 +10,30 @@ const TodoFunction: React.FC = () => {
   const [todo, setTodo] = useState<string>("");
   const [filter, setFilter] = useRecoilState(filterStateAtom);
   const filteredTodos = useRecoilValue(filteredTodosSelector);
+  const [error, setError] = useState<string | null>(null);
 
   // Todoを追加する処理
   const addTodo = () => {
-    if (todo.trim() === "") return; //空白のtodoは追加しない
+    if (todo.trim() === "") {
+      setError("Todoを入力してください");
+      return;
+    } else if (todo.length > 16) {
+      setError("文字数がオーバーしています");
+      return;
+    }
     const newTodo = {
       id: Date.now(),
       title: todo,
       createdAt: new Date(),
       completed: false,
     };
-    setTodos([...todos, newTodo]);
-    setTodo("");
+    try {
+      setTodos([...todos, newTodo]);
+      setTodo("");
+      setError(null);
+    } catch {
+      setError("追加に失敗しました");
+    }
   };
 
   // Todoの状態を変更する処理
@@ -29,18 +41,29 @@ const TodoFunction: React.FC = () => {
     const updateTodos = todos.map((todo) =>
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
     );
-    setTodos(updateTodos);
+    try {
+      setTodos(updateTodos);
+      setError(null);
+    } catch {
+      setError("変更に失敗しました");
+    }
   };
 
   // Todoを削除する処理
   const deleteTodo = (id: number) => {
     const deleteTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(deleteTodos);
+    try {
+      setTodos(deleteTodos);
+      setError(null);
+    } catch {
+      setError("削除に失敗しました");
+    }
   };
 
   return (
     <div className="todo">
       <div className="todo-input">
+        {error && <p className="error">{error}</p>}
         <input
           type="text"
           placeholder="Todoを追加..."

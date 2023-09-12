@@ -1,12 +1,13 @@
 /* todo全体のcss */
 .todo {
   width: 500px;
-  height: 500px;
-  padding: 20px;
+  max-height: 500px;
+  padding: 60px 20px;
   margin: 0 auto;
   background-color: #f0f0f0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 16px;
+  position: relative;
 }
 
 /* todoの入力部分 */
@@ -44,7 +45,7 @@
 .todo-list ul {
   list-style: none;
   padding: 0;
-  max-height: 400px;
+  max-height: 440px;
   overflow-y: auto;
 }
 
@@ -81,4 +82,19 @@
 
 .todo-list button:hover {
   opacity: 1;
+}
+
+/* エラーのcss */
+.error {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  width: 478px;
+  padding: 5px 10px;
+  margin: 0;
+  color: #ff0000;
+  background-color: #f0d0d0;
+  border: 1px solid #ff0000;
+  border-radius: 4px;
+  font-size: 14px;
 }
