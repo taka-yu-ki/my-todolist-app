@@ -28,7 +28,7 @@ const TodoFunction: React.FC = () => {
       completed: false,
     };
     try {
-      setTodos([...todos, newTodo]);
+      setTodos([newTodo, ...todos]);
       setTodo("");
       setError(null);
     } catch {
@@ -60,6 +60,18 @@ const TodoFunction: React.FC = () => {
     }
   };
 
+  const deleteCompletedTodos = () => {
+    const deleteCompletedTodos = todos.filter(
+      (todo) => todo.completed === false
+    );
+    try {
+      setTodos(deleteCompletedTodos);
+      setError(null);
+    } catch {
+      setError("削除に失敗しました");
+    }
+  };
+
   return (
     <div className="todo">
       <div className="todo-input">
@@ -73,15 +85,23 @@ const TodoFunction: React.FC = () => {
         <button onClick={addTodo}>追加</button>
       </div>
       <div className="todo-list">
-        <select
-          value={filter}
-          onChange={(e) =>
-            setFilter(e.target.value as "uncompleted" | "completed")
-          }
-        >
-          <option value="uncompleted">未完了</option>
-          <option value="completed">完了</option>
-        </select>
+        <div className="todo-list-top">
+          <select
+            value={filter}
+            onChange={(e) =>
+              setFilter(e.target.value as "uncompleted" | "completed")
+            }
+          >
+            <option value="uncompleted">未完了</option>
+            <option value="completed">完了</option>
+          </select>
+          {filter === "completed" && (
+            <button className="all-delete" onClick={deleteCompletedTodos}>
+              完了したtodoを削除
+            </button>
+          )}
+        </div>
+
         <ul>
           {filteredTodos.map((todo) => (
             <li key={todo.id}>
@@ -92,7 +112,12 @@ const TodoFunction: React.FC = () => {
               />
               <p>{todo.title}</p>
               <p>{todo.createdAt.toLocaleString()}</p>
-              <button onClick={() => deleteTodo(todo.id)}>削除</button>
+              <button
+                className="button delete"
+                onClick={() => deleteTodo(todo.id)}
+              >
+                削除
+              </button>
             </li>
           ))}
         </ul>
