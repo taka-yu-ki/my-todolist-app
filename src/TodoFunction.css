@@ -1,0 +1,133 @@
+/* todo全体のcss */
+.todo {
+  width: 700px;
+  max-height: 550px;
+  padding: 60px 20px 20px 20px;
+  margin: 0 auto;
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  position: relative;
+}
+
+/* todoの入力部分 */
+.todo-input input {
+  width: 85.7%;
+  padding: 8px;
+  margin-right: 18px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.todo-input button {
+  padding: 6px 16px;
+  background-color: #007bff;
+  color: #ffffee;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.todo-input button:hover {
+  opacity: 1;
+}
+
+.todo-input .counter {
+  display: flex;
+  margin: 0;
+  font-size: 16px;
+  color: #666;
+}
+
+/* フィルタリングとtodolist表示部分 */
+.todo-list-top {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.todo-list select {
+  padding: 6px;
+  border-radius: 4px;
+}
+
+.all-delete {
+  padding: 6px;
+  background-color: #ff2222;
+  color: #ffffee;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.all-delete:hover {
+  opacity: 1;
+}
+
+.todo-list ul {
+  list-style: none;
+  padding: 0;
+  max-height: 380px;
+  overflow-y: auto;
+}
+
+/* 単体のtodo */
+.todo-list li {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  margin-bottom: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #e0ffff;
+  justify-content: space-between;
+}
+
+.todo-list li input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.todo-list .title {
+  margin: 0;
+  flex: 1;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+.todo-list .createdAt {
+  margin: 0 10px;
+}
+
+.todo-list .button {
+  padding: 6px 10px;
+  margin-right: 10px;
+  background-color: #ff2222;
+  color: #ffffee;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.todo-list button:hover {
+  opacity: 1;
+}
+
+/* エラーのcss */
+.error {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  width: 678px;
+  padding: 5px 10px;
+  margin: 0;
+  color: #ff0000;
+  background-color: #f0d0d0;
+  border: 1px solid #ff0000;
+  border-radius: 4px;
+  font-size: 14px;
+}
