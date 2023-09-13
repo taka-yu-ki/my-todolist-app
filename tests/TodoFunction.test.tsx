@@ -25,6 +25,33 @@ test("Todoを追加", async () => {
   });
 });
 
+test("Todoを追加におけるエラーハンドリング", async () => {
+  render(
+    <RecoilRoot>
+      <TodoFunction />
+    </RecoilRoot>
+  );
+
+  // Todoを入力してない場合のエラー
+  const addButton = screen.getByText("追加");
+  fireEvent.click(addButton);
+
+  await waitFor(() => {
+    expect(screen.getByText("Todoを入力してください")).toBeInTheDocument();
+  });
+
+  // 文字制限を超えた場合のエラー
+  const input = screen.getByPlaceholderText("Todoを追加...");
+  fireEvent.change(input, {
+    target: { value: "123456789012345678901234567890123456789012345678901" },
+  });
+  fireEvent.click(addButton);
+
+  await waitFor(() => {
+    expect(screen.getByText("文字数がオーバーしています")).toBeInTheDocument();
+  });
+});
+
 test("Todoのcheckboxの状態を変更", async () => {
   render(
     <RecoilRoot>
