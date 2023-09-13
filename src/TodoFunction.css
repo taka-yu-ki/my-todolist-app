@@ -131,3 +131,27 @@
   border-radius: 4px;
   font-size: 14px;
 }
+
+/* タブレットの大きさによって変更 */
+@media screen and (max-width: 768px) {
+  .todo {
+    width: 550px;
+  }
+  .todo-input input {
+    width: 81.8%;
+  }
+  .error {
+    width: 528px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .todo {
+    width: 400px;
+  }
+  .todo-input input {
+    width: 75%;
+  }
+  .error {
+    width: 378px;
+  }
+}
