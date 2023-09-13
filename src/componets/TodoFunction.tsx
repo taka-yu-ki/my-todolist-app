@@ -97,7 +97,7 @@ const TodoFunction: React.FC = () => {
           </select>
           {filter === "completed" && (
             <button className="all-delete" onClick={deleteCompletedTodos}>
-              完了したtodoを削除
+              完了したtodosを削除
             </button>
           )}
         </div>
