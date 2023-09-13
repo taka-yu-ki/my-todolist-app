@@ -12,12 +12,15 @@ const TodoFunction: React.FC = () => {
   const filteredTodos = useRecoilValue(filteredTodosSelector);
   const [error, setError] = useState<string | null>(null);
 
+  //文字の上限を設定
+  const maxCount = 50;
+
   // Todoを追加する処理
   const addTodo = () => {
     if (todo.trim() === "") {
       setError("Todoを入力してください");
       return;
-    } else if (todo.length > 16) {
+    } else if (todo.length > maxCount) {
       setError("文字数がオーバーしています");
       return;
     }
@@ -76,13 +79,24 @@ const TodoFunction: React.FC = () => {
     <div className="todo">
       <div className="todo-input">
         {error && <p className="error">{error}</p>}
-        <input
-          type="text"
-          placeholder="Todoを追加..."
-          value={todo}
-          onChange={(e) => setTodo(e.target.value)}
-        />
-        <button onClick={addTodo}>追加</button>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            addTodo();
+          }}
+        >
+          <input
+            type="text"
+            placeholder="Todoを追加..."
+            value={todo}
+            onChange={(e) => setTodo(e.target.value)}
+          />
+          <button type="submit">追加</button>
+        </form>
+        <p className="counter">
+          文字数: {todo.length}/{maxCount}
+        </p>{" "}
+        {/* 文字数を表示 */}
       </div>
       <div className="todo-list">
         <div className="todo-list-top">
@@ -110,8 +124,8 @@ const TodoFunction: React.FC = () => {
                 checked={todo.completed}
                 onChange={() => toggleTodo(todo.id)}
               />
-              <p>{todo.title}</p>
-              <p>{todo.createdAt.toLocaleString()}</p>
+              <p className="title">{todo.title}</p>
+              <p className="createdAt">{todo.createdAt.toLocaleString()}</p>
               <button
                 className="button delete"
                 onClick={() => deleteTodo(todo.id)}
