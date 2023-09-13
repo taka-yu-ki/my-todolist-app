@@ -135,17 +135,6 @@
 /* タブレットの大きさによって変更 */
 @media screen and (max-width: 768px) {
   .todo {
-    width: 550px;
-  }
-  .todo-input input {
-    width: 81.8%;
-  }
-  .error {
-    width: 528px;
-  }
-}
-@media screen and (max-width: 480px) {
-  .todo {
     width: 400px;
   }
   .todo-input input {
@@ -153,5 +142,17 @@
   }
   .error {
     width: 378px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .todo {
+    width: 350px;
+  }
+  .todo-input input {
+    width: 71.4%;
+  }
+  .error {
+    width: 328px;
   }
 }
