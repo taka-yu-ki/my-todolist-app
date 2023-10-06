@@ -1,6 +1,6 @@
 import { RecoilRoot } from "recoil";
 import "./App.css";
-import TodoFunction from "./componets/TodoFunction";
+import TodoFunction from "./components/TodoFunction";
 
 function App() {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { expect, test } from "vitest";
-import TodoFunction from "../src/componets/TodoFunction";
+import TodoFunction from "../src/components/TodoFunction";
 import { RecoilRoot } from "recoil";
 
 test("Todoを追加", async () => {

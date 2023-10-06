@@ -63,6 +63,7 @@ const TodoFunction: React.FC = () => {
     }
   };
 
+  // 完了したTodosを削除する処理
   const deleteCompletedTodos = () => {
     const deleteCompletedTodos = todos.filter(
       (todo) => todo.completed === false
@@ -95,8 +96,7 @@ const TodoFunction: React.FC = () => {
         </form>
         <p className="counter">
           文字数: {todo.length}/{maxCount}
-        </p>{" "}
-        {/* 文字数を表示 */}
+        </p>
       </div>
       <div className="todo-list">
         <div className="todo-list-top">
